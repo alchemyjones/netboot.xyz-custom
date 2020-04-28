@@ -3,10 +3,12 @@
 ### netboot.xyz-custom menu
 ###
 
-:start
-echo Hello world!
-sleep 10
-goto custom_exit
+:Arch Net Install
+kernel http://mirror.rackspace.com/archlinux/iso/2020.04.01/arch/boot/x86_64/vmlinuz
+initrd http://mirror.rackspace.com/archlinux/iso/2020.04.01/arch/boot/x86_64/archiso.img
+imgargs vmlinuz loglevel=3
+boot || goto custom_exit
 
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
